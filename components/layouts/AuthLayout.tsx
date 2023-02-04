@@ -10,7 +10,7 @@ export const AuthLayout: FC<Props> = ({ title, children }) => {
   return (
     <>
       <Head title={title} />
-      <main className='w-full px-6 py-20 max-w-auth md:px-12'>{children}</main>
+      <main className='w-full px-6 py-20 flex justify-center md:px-12'>{children}</main>
     </>
   )
 }

@@ -14,6 +14,9 @@ module.exports = {
     extend: {
       maxWidth: {
         container: '730px'
+      },
+      fontFamily: {
+        poppins: 'Poppins, sans-serif'
       }
     }
   },

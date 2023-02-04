@@ -1,6 +1,6 @@
 <div align='center'>
   <h1>🤖 FastPay | WebApp 💻</h1>
-  <img width='400px' style='margin-bottom: 1.5rem;' src='./public/otg.jpg' />
+  <img width='400px' style='margin-bottom: 1.5rem;' src='./public/otg.webp' />
 </div>
 
 ## 📕 Acerca de FastPay

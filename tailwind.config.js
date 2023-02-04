@@ -9,7 +9,7 @@ module.exports = {
       gray: '#949494',
       green: '#33D69F',
       orange: '#FF8F00',
-      red: '#EC5757'
+      red: '#E74C3C'
     },
     extend: {
       maxWidth: {

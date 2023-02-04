@@ -1,11 +1,12 @@
 import '@/styles/globals.css'
+import type { FC } from 'react'
 import type { AppProps } from 'next/app'
 import { ToastContainer } from 'react-toastify'
 import { AxiosInterceptor } from '@/utils'
 
 AxiosInterceptor()
 
-export default function App({ Component, pageProps }: AppProps) {
+const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Component {...pageProps} />
@@ -13,3 +14,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   )
 }
+
+export default App

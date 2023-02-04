@@ -9,4 +9,5 @@ services:
     volumes:
       - ./database:/var/lib/postgresql/data
     environment:
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin

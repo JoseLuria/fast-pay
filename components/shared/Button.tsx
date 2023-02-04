@@ -7,7 +7,7 @@ const styles = cva(
     variants: {
       variant: {
         outline:
-          'border-2 border-dark-gray text-white hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-white'
+          'border-2 border-dark-gray text-white hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black'
       },
       full: {
         true: 'w-full'

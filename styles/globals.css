@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input,
+input:focus,
+input:focus-visible button,
+button:focus,
+button:focus-visible,
+a,
+a:focus,
+a:focus-visible {
+  outline: none;
+}
+
+input[type='password']::-ms-reveal {
+  filter: invert(100%);
+}

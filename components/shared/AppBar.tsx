@@ -51,7 +51,7 @@ export const AppBar = () => {
                   <Link
                     href='/'
                     className={`w-full py-3 px-4 flex tap-none gap-1 items-center rounded-lg duration-200 ${
-                      active ? 'bg-green text-white' : 'bg-none'
+                      active ? 'bg-[#D2D9E7] text-black' : 'bg-none'
                     }`}
                   >
                     <User />
@@ -64,7 +64,7 @@ export const AppBar = () => {
                   <button
                     onClick={() => signOut()}
                     className={`w-full py-3 px-4 flex tap-none gap-1 items-center rounded-lg duration-200 ${
-                      active ? 'bg-red text-white' : 'bg-none'
+                      active ? 'bg-[#D2D9E7] text-black' : 'bg-none'
                     }`}
                   >
                     <LogOut />

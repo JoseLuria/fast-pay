@@ -11,7 +11,7 @@ export const AppBar = () => {
   const { data, status } = useSession()
 
   return (
-    <header className='fixed top-0 left-0 w-full h-24 px-6 border-b-2 border-dark-gray md:px-12 lg:w-28 lg:h-full lg:border-r-2 lg:border-b-0 lg:p-12'>
+    <header className='fixed z-[1] bg-black top-0 left-0 w-full h-24 px-6 border-b-2 border-dark-gray md:px-12 lg:w-28 lg:h-full lg:border-r-2 lg:border-b-0 lg:p-12'>
       <nav className='flex h-full justify-between items-center lg:flex-col'>
         <Link className='flex items-center gap-1' href='/app'>
           <Flash className='fill-white' width={40} height={40} />

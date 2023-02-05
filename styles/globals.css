@@ -16,3 +16,7 @@ a:focus-visible {
 input[type='password']::-ms-reveal {
   filter: invert(100%);
 }
+
+.tap-none {
+  -webkit-tap-highlight-color: transparent;
+}

@@ -2,6 +2,8 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 export const AxiosInterceptor = () => {
+  if (typeof window === 'undefined') return
+
   axios.interceptors.response.use(
     (response) => {
       return response

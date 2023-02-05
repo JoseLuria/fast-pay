@@ -1,12 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { apiRedirect, getSession } from '@/utils'
+import { getSession } from '@/utils'
 
 export async function middleware(req: NextRequest) {
-  if (req.nextUrl.pathname.startsWith('/login') || req.nextUrl.pathname.startsWith('/register')) {
+  const { pathname } = req.nextUrl
+
+  if (pathname.startsWith('/app')) {
+    const session = await getSession(req)
+
+    if (!session) {
+      return NextResponse.redirect(new URL('/login', req.url))
+    }
+
+    return NextResponse.next()
+  }
+
+  if (
+    pathname.startsWith('/login') ||
+    pathname.startsWith('/register') ||
+    pathname.startsWith('/')
+  ) {
     const session = await getSession(req)
 
     if (session) {
-      return apiRedirect(req, '/')
+      return NextResponse.redirect(new URL('/app', req.url))
     }
 
     return NextResponse.next()
@@ -14,5 +30,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/login', '/register']
+  matcher: ['/login', '/register', '/', '/app/:path*']
 }

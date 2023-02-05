@@ -7,7 +7,7 @@ interface Props {
 
 export const InvoiceHeader: FC<Props> = ({ size }) => {
   return (
-    <div className='w-full flex relative flex-wrap gap-4 items-center mb-8 md:mb-12'>
+    <section className='w-full flex relative flex-wrap gap-4 items-center mb-8 md:mb-12'>
       <span>
         <h1 className='text-xl font-semibold md:text-3xl md:mb-2'>Facturas</h1>
         <p className='text-sm text-white text-opacity-50'>{size || 'Sin'} facturas</p>
@@ -24,6 +24,6 @@ export const InvoiceHeader: FC<Props> = ({ size }) => {
         </div>
         Nueva
       </button>
-    </div>
+    </section>
   )
 }

@@ -2,7 +2,7 @@ import type { FC, ButtonHTMLAttributes } from 'react'
 import { cva, VariantProps } from 'class-variance-authority'
 
 const styles = cva(
-  'px-6 text-xs font-semibold h-12 rounded-3xl duration-200 disabled:bg-dark-gray disabled:text-white disabled:cursor-not-allowed',
+  'px-6 text-sm font-semibold h-12 rounded-3xl duration-200 disabled:bg-dark-gray disabled:text-white disabled:cursor-not-allowed',
   {
     variants: {
       variant: {

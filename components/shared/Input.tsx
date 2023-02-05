@@ -30,7 +30,7 @@ export const Input: FC<Props> = ({
   )
 
   return (
-    <span className='text-xs w-full'>
+    <span className='text-sm w-full'>
       <label className={labelStyles} htmlFor='email'>
         {label}
         {error && <span>{error.message}</span>}

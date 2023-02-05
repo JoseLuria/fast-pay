@@ -58,7 +58,7 @@ const Register = () => {
 
         <Link
           href='/login'
-          className='text-xs font-semibold hover:underline focus-visible:underline'
+          className='text-sm font-semibold hover:underline focus-visible:underline'
         >
           ¿Ya tienes cuenta? Inicia sesión
         </Link>

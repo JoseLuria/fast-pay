@@ -1,8 +1,11 @@
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { signIn } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AuthLayout, Input, Button } from '@/components'
-import { GoogleColor } from '@/components/icons'
+import { AuthLayout, AuthForm, Input, Button } from '@/components'
 import { loginSchema, type Login } from '@/validations'
 
 const Login = () => {
@@ -11,27 +14,23 @@ const Login = () => {
     register,
     handleSubmit
   } = useForm<Login>({ resolver: zodResolver(loginSchema) })
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const handleLogin = async ({ email, password }: Login) => {
-    console.log({ email, password })
+    setIsLoading(true)
+    const res = await signIn('credentials', { email, password, redirect: false })
+    if (!res || res.error) {
+      setIsLoading(false)
+      toast.error('Credenciales incorrectas')
+      return
+    }
+    router.reload()
   }
 
   return (
     <AuthLayout title='Login'>
-      <form
-        className='w-full flex items-center flex-col gap-6 max-w-auth md:gap-8'
-        onSubmit={handleSubmit(handleLogin)}
-      >
-        <Button type='button' className='flex justify-center items-center gap-2' full>
-          <GoogleColor />
-          Iniciar sesión con Google
-        </Button>
-
-        <div className='relative w-full flex items-center'>
-          <hr className='border-none w-full h-[2px] bg-dark-gray' />
-          <p className='font-semibold bg-black absolute left-[50%] -translate-x-[50%] px-2'>O</p>
-        </div>
-
+      <AuthForm disableGoogle={isLoading} onSubmit={handleSubmit(handleLogin)}>
         <Input
           label='Correo electrónico'
           name='email'
@@ -48,21 +47,17 @@ const Login = () => {
           type='password'
         />
 
-        <Link
-          href='/'
-          className='text-xs ml-auto font-semibold hover:underline focus-visible:underline'
-        >
-          ¿Olvidaste tu contraseña?
-        </Link>
-
-        <Button type='submit' full>
+        <Button disabled={isLoading} type='submit' full>
           Iniciar sesión
         </Button>
 
-        <Link href='/' className='text-xs font-semibold hover:underline focus-visible:underline'>
+        <Link
+          href='/register'
+          className='text-xs font-semibold hover:underline focus-visible:underline'
+        >
           ¿Aún no tienes cuenta? Crea una cuenta
         </Link>
-      </form>
+      </AuthForm>
     </AuthLayout>
   )
 }

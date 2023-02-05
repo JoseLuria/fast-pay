@@ -16,10 +16,10 @@ const Register = () => {
   } = useForm<Register>({ resolver: zodResolver(registerSchema) })
   const router = useRouter()
 
-  const handleLogin = async (body: Register) => {
+  const handleRegister = async ({ email, name, password }: Register) => {
     setIsLoading(true)
     try {
-      await axios.post('/api/user', body)
+      await axios.post('/api/user', { email, name, password })
       router.push('/login')
     } catch (error) {
       setIsLoading(false)
@@ -27,8 +27,8 @@ const Register = () => {
   }
 
   return (
-    <AuthLayout title='Login'>
-      <AuthForm disableGoogle={isLoading} onSubmit={handleSubmit(handleLogin)}>
+    <AuthLayout title='Registro'>
+      <AuthForm disableGoogle={isLoading} onSubmit={handleSubmit(handleRegister)}>
         <Input
           label='Nombre completo'
           name='name'

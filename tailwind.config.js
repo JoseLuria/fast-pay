@@ -16,6 +16,10 @@ module.exports = {
         container: '730px',
         auth: '450px'
       },
+      minHeight: {
+        invoice: '134px',
+        'invoice-md': '72px'
+      },
       fontFamily: {
         poppins: 'Poppins, sans-serif'
       }

@@ -1,10 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { getToken } from 'next-auth/jwt'
-import { NextRequest, NextResponse } from 'next/server'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextRequest } from 'next/server'
+import { type JWT, getToken } from 'next-auth/jwt'
 import type { ZodIssue } from 'zod'
 import { errMsg, capitalize } from '@/utils'
 
-type requestSession = NextRequest | NextApiRequest
+type RequestSession = NextRequest | NextApiRequest
 
 type AsyncFunction = (req: NextApiRequest, res: NextApiResponse) => Promise<any>
 
@@ -27,7 +27,6 @@ export const catchError = (fn: AsyncFunction) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {
     return fn(req, res).catch((error) =>
       res.status(error.code ? error.code : 500).json({
-        error: true,
         message: error.message,
         stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
       })
@@ -43,34 +42,15 @@ export const formatZodError = (issues: ZodIssue[]) => {
         messages.includes(message) ? message : 'valor incorrecto'
       }`
   )
+
   return error.toString().trim()
 }
 
-export const apiRedirect = (req: NextRequest, page: string) => {
-  const url = req.nextUrl.clone()
-  url.pathname = page
-  return NextResponse.redirect(url)
-}
-
-export const apiRedirectToLogin = (req: NextRequest) => {
-  const requestedPage = req.nextUrl.pathname
-  const url = req.nextUrl.clone()
-  url.pathname = '/login'
-  url.search = `page=${requestedPage}`
-  return NextResponse.redirect(url)
-}
-
-export const getSession = async (req: requestSession): Promise<any> => {
-  const session: any = await getToken({
+export const getSession = async (req: RequestSession): Promise<JWT | null> => {
+  const session = await getToken({
     req,
     secret: process.env.NEXTAUTH_SECRET
   })
 
   return session
-}
-
-export const apiUnauthorized = (req: NextRequest) => {
-  const url = req.nextUrl.clone()
-  url.pathname = '/api/unauthorized'
-  return NextResponse.rewrite(url)
 }

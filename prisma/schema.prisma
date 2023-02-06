@@ -8,18 +8,16 @@ datasource db {
 }
 
 model Invoice {
-  id            String   @id @default(uuid()) @db.Uuid
-  title         String
+  id            String       @id @default(uuid()) @db.Uuid
   decription    String
   clientName    String
   clientEmail   String
-  date          DateTime @default(now())
+  date          DateTime     @default(now())
   terms         Int
   items         Item[]
-  User          User?    @relation(fields: [userId], references: [id])
-  userId        String?  @db.Uuid
-  isPublic      Boolean  @default(true)
-  isPaid        Boolean  @default(false)
+  User          User?        @relation(fields: [userId], references: [id])
+  userId        String?      @db.Uuid
+  status        InvoiceSatus @default(notPaid)
   transactionId String?
 }
 
@@ -40,6 +38,12 @@ model User {
   image    String?
   type     UserType  @default(credentials)
   invoices Invoice[]
+}
+
+enum InvoiceSatus {
+  paid
+  notPaid
+  paused
 }
 
 enum UserType {

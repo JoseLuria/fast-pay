@@ -54,3 +54,10 @@ export const getSession = async (req: RequestSession): Promise<JWT | null> => {
 
   return session
 }
+
+export const excludeFields = <T, Key extends keyof T>(model: T, keys: Key[]): Omit<T, Key> => {
+  for (let key of keys) {
+    delete model[key]
+  }
+  return model
+}

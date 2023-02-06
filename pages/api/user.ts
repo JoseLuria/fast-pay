@@ -27,7 +27,7 @@ const getUser = async (req: NextApiRequest, res: NextApiResponse<UserApi>) => {
   const session = await getSession(req)
 
   if (!session) {
-    throw new AppError(401, 'No estas autenticado')
+    throw new AppError(401, 'No estás autenticado')
   }
 
   const id = session.user.id
@@ -35,7 +35,7 @@ const getUser = async (req: NextApiRequest, res: NextApiResponse<UserApi>) => {
   const dbUser = await db.user.findFirst({ where: { id } })
 
   if (!dbUser) {
-    throw new AppError(401, 'No se encontro el usuario')
+    throw new AppError(401, 'No se encontró el usuario')
   }
 
   const user = excludeFields(dbUser, ['password'])

@@ -4,9 +4,9 @@ import { getSession } from '@/utils'
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
 
-  if (pathname.startsWith('/app')) {
-    const session = await getSession(req)
+  const session = await getSession(req)
 
+  if (pathname.startsWith('/app')) {
     if (!session) {
       return NextResponse.redirect(new URL('/login', req.url))
     }
@@ -19,8 +19,6 @@ export async function middleware(req: NextRequest) {
     pathname.startsWith('/register') ||
     pathname.startsWith('/')
   ) {
-    const session = await getSession(req)
-
     if (session) {
       return NextResponse.redirect(new URL('/app', req.url))
     }

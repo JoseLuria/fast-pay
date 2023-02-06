@@ -22,13 +22,13 @@ export const AppBar = () => {
           <Menu.Button className='w-11 h-11 bg-dark-gray duration-200 border-2 border-dark-gray rounded-full overflow-hidden focus-visible:border-gray'>
             {status === 'authenticated' && (
               <>
-                {data.user && data.user.image ? (
+                {data.user.image ? (
                   <Image
                     priority
                     width={44}
                     height={44}
                     src={data.user.image}
-                    alt={data.user.name ?? 'Usuario'}
+                    alt={data.user.name}
                   />
                 ) : (
                   <Flash className='fill-white m-auto' width={26} height={26} />

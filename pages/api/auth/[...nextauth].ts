@@ -1,17 +1,21 @@
 import NextAuth from 'next-auth/next'
 import Credentials from 'next-auth/providers/credentials'
+import { User } from '@prisma/client'
 import { loginSchema } from '@/validations'
 import { authUser } from '@/server'
+
+type UserJWT = Omit<User, 'password'>
 
 declare module 'next-auth' {
   interface Session {
     accessToken?: any
+    user: UserJWT
   }
 }
 
 declare module 'next-auth/jwt' {
   interface JWT {
-    user?: any
+    user: UserJWT
   }
 }
 
@@ -44,7 +48,7 @@ export default NextAuth({
         token.accessToken = account.access_token
         switch (account.type) {
           case 'credentials':
-            token.user = user
+            token.user = user as UserJWT
             break
           default:
             break

@@ -1,6 +1,6 @@
 import type { InvoiceSatus } from '@prisma/client'
 
-interface SingleInvoice {
+export interface SingleInvoice {
   id: string
   date: Date
   clientName: string

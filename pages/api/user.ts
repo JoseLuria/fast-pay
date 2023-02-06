@@ -2,12 +2,20 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcryptjs'
 import { db } from '@/server'
 import { registerSchema } from '@/validations'
-import { invalidMethod, catchError, AppError, formatZodError } from '@/utils'
+import {
+  invalidMethod,
+  catchError,
+  AppError,
+  getSession,
+  formatZodError,
+  excludeFields
+} from '@/utils'
+import type { UserApi } from '@/server/types'
 
-type Data = { message: string }
-
-export default catchError(async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+export default catchError(async (req: NextApiRequest, res: NextApiResponse<UserApi>) => {
   switch (req.method) {
+    case 'GET':
+      return await getUser(req, res)
     case 'POST':
       return await createUser(req, res)
     default:
@@ -15,7 +23,27 @@ export default catchError(async (req: NextApiRequest, res: NextApiResponse<Data>
   }
 })
 
-const createUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const getUser = async (req: NextApiRequest, res: NextApiResponse<UserApi>) => {
+  const session = await getSession(req)
+
+  if (!session) {
+    throw new AppError(401, 'No estas autenticado')
+  }
+
+  const id = session.user.id
+
+  const dbUser = await db.user.findFirst({ where: { id } })
+
+  if (!dbUser) {
+    throw new AppError(401, 'No se encontro el usuario')
+  }
+
+  const user = excludeFields(dbUser, ['password'])
+
+  res.status(200).json({ user })
+}
+
+const createUser = async (req: NextApiRequest, res: NextApiResponse<UserApi>) => {
   const userData = registerSchema.safeParse(req.body)
 
   if (!userData.success) {

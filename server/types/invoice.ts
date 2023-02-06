@@ -8,4 +8,6 @@ export interface SingleInvoice {
   total: number
 }
 
-export type InvoiceApi = { message: string } | { invoices: SingleInvoice[] }
+export type Invoices = { invoices: SingleInvoice[] }
+
+export type InvoiceApi = { message: string } | Invoices

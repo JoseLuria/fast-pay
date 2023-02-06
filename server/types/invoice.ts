@@ -1,3 +1,11 @@
-import type { Invoice } from '@prisma/client'
+import type { InvoiceSatus } from '@prisma/client'
 
-export type InvoiceApi = { message: string } | { invoices: Invoice[] }
+interface SingleInvoice {
+  id: string
+  date: Date
+  clientName: string
+  status: InvoiceSatus
+  total: number
+}
+
+export type InvoiceApi = { message: string } | { invoices: SingleInvoice[] }

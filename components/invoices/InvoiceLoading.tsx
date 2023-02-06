@@ -6,7 +6,7 @@ export const InvoiceLoading = () => {
   return (
     <InvoicesContainer>
       {placeholderElements.map((index) => (
-        <div
+        <li
           key={index}
           className='w-full animate-pulse min-h-invoice rounded-lg bg-dark-gray last:hidden md:min-h-invoice-md md:last:block'
         />

@@ -5,5 +5,5 @@ interface Props {
 }
 
 export const InvoicesContainer: FC<Props> = ({ children }) => {
-  return <section className='flex w-full flex-col gap-4'>{children}</section>
+  return <ul className='flex w-full flex-col gap-4'>{children}</ul>
 }

@@ -6,18 +6,18 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AuthLayout, AuthForm, Input, Button } from '@/components'
-import { loginSchema, type Login } from '@/validations'
+import { loginSchema, type Login as LoginSchema } from '@/validations'
 
 const Login = () => {
   const {
     formState: { errors },
     register,
     handleSubmit
-  } = useForm<Login>({ resolver: zodResolver(loginSchema) })
+  } = useForm<LoginSchema>({ resolver: zodResolver(loginSchema) })
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
-  const handleLogin = async ({ email, password }: Login) => {
+  const handleLogin = async ({ email, password }: LoginSchema) => {
     setIsLoading(true)
     const res = await signIn('credentials', { email, password, redirect: false })
     if (!res || res.error) {

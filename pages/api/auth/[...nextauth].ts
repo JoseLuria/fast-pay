@@ -7,6 +7,7 @@ import { authUser } from '@/server'
 type UserJWT = Omit<User, 'password'>
 
 declare module 'next-auth' {
+  /* eslint-disable-next-line no-unused-vars */
   interface Session {
     accessToken?: any
     user: UserJWT
@@ -14,6 +15,7 @@ declare module 'next-auth' {
 }
 
 declare module 'next-auth/jwt' {
+  /* eslint-disable-next-line no-unused-vars */
   interface JWT {
     user: UserJWT
   }

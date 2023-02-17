@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
 import { AuthLayout, AuthForm, Input, Button } from '@/components'
-import { registerSchema, type Register } from '@/validations'
+import { registerSchema, type Register as RegisterSchema } from '@/validations'
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -13,10 +13,10 @@ const Register = () => {
     formState: { errors },
     register,
     handleSubmit
-  } = useForm<Register>({ resolver: zodResolver(registerSchema) })
+  } = useForm<RegisterSchema>({ resolver: zodResolver(registerSchema) })
   const router = useRouter()
 
-  const handleRegister = async ({ email, name, password }: Register) => {
+  const handleRegister = async ({ email, name, password }: RegisterSchema) => {
     setIsLoading(true)
     try {
       await axios.post('/api/user', { email, name, password })

@@ -13,6 +13,7 @@ module.exports = {
     },
     extend: {
       maxWidth: {
+        landing: '1200px',
         container: '730px',
         auth: '450px'
       },

@@ -1,5 +1,11 @@
+import { HomeLayout, HomeHeader } from '@/components'
+
 const Home = () => {
-  return <div>Home</div>
+  return (
+    <HomeLayout title='FastPay: Envía tickets y recibe pagos con PayPal'>
+      <HomeHeader />
+    </HomeLayout>
+  )
 }
 
 export default Home

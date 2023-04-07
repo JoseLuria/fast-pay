@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import type { UserApi } from '@/server/types'
 import bcrypt from 'bcryptjs'
 import { db } from '@/server'
 import { registerSchema } from '@/validations'
@@ -10,7 +11,6 @@ import {
   formatZodError,
   excludeFields
 } from '@/server/utils'
-import type { UserApi } from '@/server/types'
 
 export default catchError(async (req: NextApiRequest, res: NextApiResponse<UserApi>) => {
   switch (req.method) {

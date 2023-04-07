@@ -1,0 +1,27 @@
+import Image from 'next/image'
+
+export const HomeHeader = () => {
+  return (
+    <header className='w-full flex flex-col py-12 gap-12 md:items-center md:flex-row lg:py-28'>
+      <section className='w-full flex flex-col gap-5 lg:gap-8'>
+        <h1 className='font-semibold text-4xl leading-9 lg:text-6xl lg:leading-none'>
+          Envía tickets y recibe pagos con PayPal
+        </h1>
+        <p className='text-sm text-white text-opacity-50 max-w-[450px]'>
+          FastPay es una plataforma que permite enviar tickets a tus contactos mediante correo
+          electrónico y recibir pagos a través de PayPal de manera sencilla y eficiente.
+        </p>
+        <button className='text-sm bg-white text-black font-semibold py-3 px-12 rounded-3xl w-full md:w-fit'>
+          Comienza a recibir pagos
+        </button>
+      </section>
+      <Image
+        width={600}
+        height={480}
+        className='w-full rounded-xl md:w-1/2'
+        src='/assets/preview-mobile.jpg'
+        alt='FastPay: Envía tickets y recibe pagos con PayPal'
+      />
+    </header>
+  )
+}

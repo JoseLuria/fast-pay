@@ -16,6 +16,7 @@ export const HomeHeader = () => {
         </button>
       </section>
       <Image
+        priority
         width={600}
         height={480}
         className='w-full rounded-xl md:w-1/2'

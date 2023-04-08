@@ -2,7 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-button,
-a {
+input,
+input:focus,
+input:focus-visible button,
+button:focus,
+button:focus-visible,
+a,
+a:focus,
+a:focus-visible {
   outline: none;
+}
+
+input[type='password']::-ms-reveal {
+  filter: invert(100%);
+}
+
+.tap-none {
+  -webkit-tap-highlight-color: transparent;
 }

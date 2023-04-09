@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import Link from 'next/link'
 import { ArrowDown, Plus } from '@/components/svg'
 
 interface Props {
@@ -18,15 +19,15 @@ export const InvoiceHeader: FC<Props> = ({ size }) => {
         <ArrowDown width={18} height={18} />
       </button>
 
-      <button
-        type='button'
-        className='h-12 py-1 flex gap-2 pl-2 pr-4 items-center focus-visible:outline-2 focus-visible:outline-green font-semibold text-sm rounded-3xl bg-dark-gray'
+      <Link
+        href='/app/edit/new'
+        className='h-12 py-1 flex gap-2 pl-2 pr-4 items-center font-semibold text-sm duration-200 rounded-3xl bg-dark-gray hover:bg-low-gray focus-visible:bg-low-gray'
       >
         <span className='w-8 h-8 bg-black flex justify-center items-center rounded-full'>
           <Plus width={28} height={28} />
         </span>
         Nuevo
-      </button>
+      </Link>
     </section>
   )
 }

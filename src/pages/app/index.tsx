@@ -1,21 +1,21 @@
 import dynamic from 'next/dynamic'
-import { DashboardLayout, ErrorBoundary, InvoiceHeader, InvoiceLoading } from '@/components'
-import { useInvoices } from '@/hooks'
+import { DashboardLayout, ErrorBoundary, TicketsHeader, TicketLoading } from '@/components'
+import { useTicket } from '@/hooks'
 
-const InvoiceEmpty = dynamic(import('@/components').then(({ InvoiceEmpty }) => InvoiceEmpty))
-const InvoiceList = dynamic(import('@/components').then(({ InvoiceList }) => InvoiceList))
+const TicketEmpty = dynamic(import('@/components').then(({ TicketsEmpty }) => TicketsEmpty))
+const TicketList = dynamic(import('@/components').then(({ TicketsList }) => TicketsList))
 
 const Dashboard = () => {
-  const { invoices, isLoading, error } = useInvoices()
+  const { tickets, status } = useTicket()
 
   return (
-    <ErrorBoundary error={error}>
+    <ErrorBoundary error={status === 'error'}>
       <DashboardLayout title='Mis facturas'>
-        <InvoiceHeader size={invoices.length} />
-        {isLoading ? (
-          <InvoiceLoading />
+        <TicketsHeader size={tickets.length} />
+        {status === 'loading' ? (
+          <TicketLoading />
         ) : (
-          <>{invoices.length > 0 ? <InvoiceList invoices={invoices} /> : <InvoiceEmpty />}</>
+          <>{tickets.length > 0 ? <TicketList invoices={tickets} /> : <TicketEmpty />}</>
         )}
       </DashboardLayout>
     </ErrorBoundary>

@@ -1,18 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { InvoiceApi } from '@/server/types'
+import type { TicketApi } from '@/server/types'
 import { db } from '@/server'
 import { invalidMethod, catchError, AppError, getSession } from '@/server/utils'
 
-export default catchError(async (req: NextApiRequest, res: NextApiResponse<InvoiceApi>) => {
+export default catchError(async (req: NextApiRequest, res: NextApiResponse<TicketApi>) => {
   switch (req.method) {
     case 'GET':
-      return await getInvoices(req, res)
+      return await getTickets(req, res)
     default:
       return invalidMethod()
   }
 })
 
-const getInvoices = async (req: NextApiRequest, res: NextApiResponse<InvoiceApi>) => {
+const getTickets = async (req: NextApiRequest, res: NextApiResponse<TicketApi>) => {
   const session = await getSession(req)
 
   if (!session) {
@@ -21,18 +21,18 @@ const getInvoices = async (req: NextApiRequest, res: NextApiResponse<InvoiceApi>
 
   const userId = session.user.id
 
-  const dbInvoices = await db.invoice.findMany({
+  const dbTickets = await db.ticket.findMany({
     where: { userId },
     include: {
       items: true
     }
   })
 
-  if (dbInvoices.length === 0) {
-    return res.status(200).json({ invoices: [] })
+  if (dbTickets.length === 0) {
+    return res.status(200).json({ tickets: [] })
   }
 
-  const invoices = dbInvoices.map(({ id, date, clientName, status, items }) => {
+  const tickets = dbTickets.map(({ id, date, clientName, status, items }) => {
     const { price: total } = items.reduce((prev, { price, quantity }) => ({
       ...prev,
       price: prev.price + price * quantity
@@ -41,5 +41,5 @@ const getInvoices = async (req: NextApiRequest, res: NextApiResponse<InvoiceApi>
     return { id, date, clientName, status, total }
   })
 
-  res.status(200).json({ invoices })
+  res.status(200).json({ tickets })
 }

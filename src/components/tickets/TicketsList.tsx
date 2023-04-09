@@ -1,9 +1,9 @@
 import type { FC } from 'react'
 import { TicketsContainer } from '@/components'
-import type { Invoices } from '@/server/types'
+import type { Tickets } from '@/server/types'
 import { formatId, formatPrice, formatDate } from '@/utils'
 
-export const TicketsList: FC<Invoices> = ({ invoices }) => {
+export const TicketsList: FC<Tickets> = ({ tickets: invoices }) => {
   return (
     <TicketsContainer>
       {invoices.map(({ id, clientName, date, total }) => (

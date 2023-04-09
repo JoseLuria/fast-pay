@@ -1,17 +1,17 @@
-import type { SingleInvoice, Invoices } from '@/server/types'
+import type { SingleTicket, Tickets } from '@/server/types'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 type FetchStatus = 'loading' | 'loaded' | 'error'
 
 export const useTicket = () => {
-  const [tickets, setTickets] = useState<SingleInvoice[]>([])
+  const [tickets, setTickets] = useState<SingleTicket[]>([])
   const [status, setStatus] = useState<FetchStatus>('loading')
 
-  const fetchInvoices = async () => {
+  const fetchTickets = async () => {
     try {
-      const { data } = await axios.get<Invoices>('/api/invoice')
-      setTickets(data.invoices)
+      const { data } = await axios.get<Tickets>('/api/ticket')
+      setTickets(data.tickets)
       setStatus('loaded')
     } catch (error) {
       setStatus('error')
@@ -19,7 +19,7 @@ export const useTicket = () => {
   }
 
   useEffect(() => {
-    fetchInvoices()
+    fetchTickets()
   }, [])
 
   return { tickets, status }

@@ -15,7 +15,7 @@ const Dashboard = () => {
         {status === 'loading' ? (
           <TicketLoading />
         ) : (
-          <>{tickets.length > 0 ? <TicketList invoices={tickets} /> : <TicketEmpty />}</>
+          <>{tickets.length > 0 ? <TicketList tickets={tickets} /> : <TicketEmpty />}</>
         )}
       </DashboardLayout>
     </ErrorBoundary>

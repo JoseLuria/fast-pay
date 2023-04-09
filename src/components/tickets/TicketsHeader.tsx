@@ -20,7 +20,7 @@ export const TicketsHeader: FC<Props> = ({ size }) => {
       </button>
 
       <Link
-        href='/app/edit/new'
+        href='/app/ticket/edit?ticket=new'
         className='h-12 py-1 flex gap-2 pl-2 pr-4 items-center font-semibold text-sm duration-200 rounded-3xl bg-dark-gray hover:bg-low-gray focus-visible:bg-low-gray'
       >
         <span className='w-8 h-8 bg-black flex justify-center items-center rounded-full'>

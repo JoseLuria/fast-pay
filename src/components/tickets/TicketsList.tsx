@@ -3,10 +3,10 @@ import { TicketsContainer } from '@/components'
 import type { Tickets } from '@/server/types'
 import { formatId, formatPrice, formatDate } from '@/utils'
 
-export const TicketsList: FC<Tickets> = ({ tickets: invoices }) => {
+export const TicketsList: FC<Tickets> = ({ tickets }) => {
   return (
     <TicketsContainer>
-      {invoices.map(({ id, clientName, date, total }) => (
+      {tickets.map(({ id, clientName, date, total }) => (
         <li
           key={id}
           id={id}

@@ -53,7 +53,7 @@ export const Appbar = () => {
               <Menu.Item>
                 {({ active }) => (
                   <Link
-                    href='/'
+                    href='/app/profile'
                     className={`w-full py-3 px-4 flex tap-none gap-1 items-center rounded-lg duration-200 ${
                       active ? 'bg-[#D2D9E7] text-black' : 'bg-none'
                     }`}

@@ -7,40 +7,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Invoice {
-  id            String       @id @default(uuid()) @db.Uuid
+model Ticket {
+  id            String      @id @default(uuid()) @db.Uuid
   decription    String
   clientName    String
   clientEmail   String
-  date          DateTime     @default(now())
+  date          DateTime    @default(now())
   terms         Int
   items         Item[]
-  User          User?        @relation(fields: [userId], references: [id])
-  userId        String?      @db.Uuid
-  status        InvoiceSatus @default(notPaid)
+  User          User?       @relation(fields: [userId], references: [id])
+  userId        String?     @db.Uuid
+  status        TicketSatus @default(notPaid)
   transactionId String?
 }
 
 model Item {
-  id        String  @id @default(uuid()) @db.Uuid
-  name      String
-  quantity  Int
-  price     Float
-  Invoice   Invoice @relation(fields: [invoiceId], references: [id])
-  invoiceId String  @db.Uuid
+  id       String @id @default(uuid()) @db.Uuid
+  name     String
+  quantity Int
+  price    Float
+  Ticket   Ticket @relation(fields: [ticketId], references: [id])
+  ticketId String @db.Uuid
 }
 
 model User {
-  id       String    @id @default(uuid()) @db.Uuid
-  email    String    @unique
+  id       String   @id @default(uuid()) @db.Uuid
+  email    String   @unique
   name     String
   password String
   image    String?
-  type     UserType  @default(credentials)
-  invoices Invoice[]
+  type     UserType @default(credentials)
+  tickets  Ticket[]
 }
 
-enum InvoiceSatus {
+enum TicketSatus {
   paid
   notPaid
   paused

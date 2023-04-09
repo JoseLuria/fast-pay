@@ -6,7 +6,7 @@ interface Props {
   size?: number
 }
 
-export const InvoiceHeader: FC<Props> = ({ size }) => {
+export const TicketsHeader: FC<Props> = ({ size }) => {
   return (
     <section className='w-full flex relative flex-wrap gap-4 items-center mb-8 md:mb-12'>
       <span>

@@ -1,11 +1,11 @@
 import type { FC } from 'react'
-import { InvoicesContainer } from '@/components'
+import { TicketsContainer } from '@/components'
 import type { Invoices } from '@/server/types'
 import { formatId, formatPrice, formatDate } from '@/utils'
 
-export const InvoiceList: FC<Invoices> = ({ invoices }) => {
+export const TicketsList: FC<Invoices> = ({ invoices }) => {
   return (
-    <InvoicesContainer>
+    <TicketsContainer>
       {invoices.map(({ id, clientName, date, total }) => (
         <li
           key={id}
@@ -28,6 +28,6 @@ export const InvoiceList: FC<Invoices> = ({ invoices }) => {
           </div>
         </li>
       ))}
-    </InvoicesContainer>
+    </TicketsContainer>
   )
 }

@@ -1,6 +1,6 @@
 import { Illustration } from '@/components/svg'
 
-export const InvoiceEmpty = () => {
+export const TicketsEmpty = () => {
   return (
     <section className='mt-16 flex flex-col text-center items-center md:mt-20'>
       <span className='w-full max-w-[241px]'>

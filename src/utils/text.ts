@@ -2,7 +2,7 @@ export const capitalize = (str: string) => str[0].toUpperCase() + str.substring(
 
 export const formatId = (str: string) => {
   const hash = str.split('-')
-  return '#' + hash[0]
+  return '#' + hash[0].toUpperCase()
 }
 
 export const formatDate = (time: Date) => {

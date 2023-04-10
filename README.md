@@ -14,7 +14,7 @@ FastPay es una plataforma que permite enviar tickets a tus contactos mediante co
 Primero clona el repositorio desde GitHub:
 
 ```shell
-git clone https://github.com/JoseLuria/fast-pay
+git clone https://github.com/JoseLuria/fast-pay.git
 ```
 
 Muévete a la carpeta del proyecto:

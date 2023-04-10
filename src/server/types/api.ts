@@ -9,5 +9,3 @@ export interface CatchError {
   message: string
   stack?: string
 }
-
-export type ApiError = { message: string }

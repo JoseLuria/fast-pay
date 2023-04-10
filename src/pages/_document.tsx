@@ -16,7 +16,7 @@ const Document = () => {
           rel='stylesheet'
         />
       </Head>
-      <body className='bg-black text-white'>
+      <body className='bg-black text-white font-poppins'>
         <Main />
         <NextScript />
       </body>

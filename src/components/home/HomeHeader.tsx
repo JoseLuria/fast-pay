@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Button } from '@/components'
+import { Button, Text } from '@/components'
 
 export const HomeHeader = () => {
   return (
@@ -8,10 +8,10 @@ export const HomeHeader = () => {
         <h1 className='font-semibold text-4xl leading-9 lg:text-6xl lg:leading-none'>
           Envía tickets y recibe pagos con PayPal
         </h1>
-        <p className='text-sm text-white text-opacity-50 max-w-[450px]'>
+        <Text className='max-w-[450px]'>
           FastPay es una plataforma que permite enviar tickets a tus contactos mediante correo
           electrónico y recibir pagos a través de PayPal de manera sencilla y eficiente.
-        </p>
+        </Text>
         <Button className='md:w-fit'>Comienza a recibir pagos</Button>
       </section>
       <Image

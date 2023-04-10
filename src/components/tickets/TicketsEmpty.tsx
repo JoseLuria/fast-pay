@@ -1,16 +1,17 @@
+import { Text } from '@/components'
 import { Illustration } from '@/components/svg'
 
 export const TicketsEmpty = () => {
   return (
-    <section className='mt-16 flex flex-col text-center items-center md:mt-20'>
+    <section className='mt-16 flex flex-col gap-4 text-center items-center md:mt-20'>
       <span className='w-full max-w-[241px]'>
         <Illustration />
       </span>
-      <h2 className='my-6 font-semibold text-xl'>Parece que no hay nada</h2>
-      <p className='max-w-[250px] text-sm text-white text-opacity-50'>
+      <Text tag='h2'>Parece que no hay nada</Text>
+      <Text className='max-w-[250px]'>
         Crea un ticket haciendo clic en el botón <span className='font-semibold'>Nuevo</span> y
         empiece a recibir pagos
-      </p>
+      </Text>
     </section>
   )
 }

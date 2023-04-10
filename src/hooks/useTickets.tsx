@@ -1,11 +1,11 @@
-import type { SingleTicket, Tickets } from '@/server/types'
+import type { UserTicket, Tickets } from '@/server/types'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 type FetchStatus = 'loading' | 'loaded' | 'error'
 
 export const useTicket = () => {
-  const [tickets, setTickets] = useState<SingleTicket[]>([])
+  const [tickets, setTickets] = useState<UserTicket[]>([])
   const [status, setStatus] = useState<FetchStatus>('loading')
 
   const fetchTickets = async () => {

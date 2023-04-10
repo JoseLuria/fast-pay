@@ -8,3 +8,11 @@ export const calculateTicketTotal = (items: Item[]) => {
 
   return total
 }
+
+export const calculateItemsTotal = (items: Item[]) => {
+  return items.map(({ id, name, price, quantity }) => {
+    const total = quantity * price
+
+    return { id, name, price, quantity, total }
+  })
+}

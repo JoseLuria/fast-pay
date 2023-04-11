@@ -8,9 +8,12 @@ module.exports = {
       'dark-gray': '#292929',
       'low-gray': '#535353',
       gray: '#949494',
-      green: '#33D69F',
+      green: '#1CDB9B',
+      'low-green': '#75E0BC',
       orange: '#FF8F00',
-      red: '#E74C3C'
+      'low-orange': '#E7AE66',
+      red: '#E74C3C',
+      'low-red': '#FF9797'
     },
     extend: {
       maxWidth: {

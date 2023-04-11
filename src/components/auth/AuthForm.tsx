@@ -14,12 +14,7 @@ export const AuthForm: FC<Props> = ({ children, onSubmit, disableGoogle }) => {
       className='w-full flex items-center flex-col gap-6 max-w-auth text-center md:gap-8'
       onSubmit={onSubmit}
     >
-      <Button
-        disabled={disableGoogle}
-        type='button'
-        className='flex justify-center items-center gap-2'
-        full
-      >
+      <Button disabled={disableGoogle} type='button' className='gap-2' full>
         <Google width={20} height={20} />
         Ingresar con Google
       </Button>

@@ -10,17 +10,17 @@ const errorData = {
   page: {
     title: 'Página no encontrada',
     message: 'Esta página no existe o ha sido eliminada. Le sugerimos regresar al inicio.',
-    button: 'Volver al principio'
+    buttonText: 'Volver al principio'
   },
   error: {
     title: 'Error de la aplicación',
     message: 'Sucedió un error al cargar la información. Le sugerimos recargar la página.',
-    button: 'Recargar página'
+    buttonText: 'Recargar página'
   }
 }
 
 export const Error: FC<Props> = ({ type = 'error' }) => {
-  const { title, message, button } = errorData[type]
+  const { title, message, buttonText } = errorData[type]
   const router = useRouter()
 
   return (
@@ -29,9 +29,11 @@ export const Error: FC<Props> = ({ type = 'error' }) => {
         <span className='text-8xl font-semibold'>404</span>
         <h1 className='uppercase text-2xl font-semibold'>Ups! {title}</h1>
         <p className='text-sm'>{message}</p>
-        <Button onClick={() => (type === 'page' ? router.push('/') : router.reload())}>
-          {button}
-        </Button>
+        {type === 'page' ? (
+          <Button href='/'>{buttonText}</Button>
+        ) : (
+          <Button onClick={() => router.reload()}>{buttonText}</Button>
+        )}
       </main>
     </div>
   )

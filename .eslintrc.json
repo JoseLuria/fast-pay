@@ -1,5 +1,8 @@
 {
   "extends": ["next/core-web-vitals", "standard"],
+  "globals": {
+    "JSX": true
+  },
   "rules": {
     "space-before-function-paren": "off",
     "multiline-ternary": "off"

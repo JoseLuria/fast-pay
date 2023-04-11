@@ -52,7 +52,7 @@ const Register = () => {
           type='password'
         />
 
-        <Button type='submit' disabled={isLoading} full>
+        <Button type='submit' disabled={isLoading} variant='outline' full>
           Crear cuenta
         </Button>
 

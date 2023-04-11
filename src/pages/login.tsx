@@ -47,7 +47,7 @@ const Login = () => {
           type='password'
         />
 
-        <Button disabled={isLoading} type='submit' full>
+        <Button disabled={isLoading} type='submit' variant='outline' full>
           Iniciar sesión
         </Button>
 

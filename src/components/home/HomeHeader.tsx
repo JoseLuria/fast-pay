@@ -12,7 +12,7 @@ export const HomeHeader = () => {
           FastPay es una plataforma que permite enviar tickets a tus contactos mediante correo
           electrónico y recibir pagos a través de PayPal de manera sencilla y eficiente.
         </Text>
-        <Button href='/login' className='md:w-fit'>
+        <Button href='/login' variant='outline' className='md:w-fit' full>
           Comienza a recibir pagos
         </Button>
       </section>

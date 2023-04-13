@@ -5,11 +5,10 @@ import { formatId } from '@/utils'
 
 interface Props {
   title: string
-  isNew: boolean
-  id: string
+  id?: string
 }
 
-const TicketEdit: FC<Props> = ({ title, id, isNew }) => {
+const TicketEdit: FC<Props> = ({ title, id }) => {
   return (
     <DashboardLayout title={title}>
       <Text tag='h1'>{title}</Text>
@@ -18,13 +17,18 @@ const TicketEdit: FC<Props> = ({ title, id, isNew }) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { id = '' } = query
+  const { id = '' } = query as { id: string }
 
-  const title = id ? `Editando ${formatId(id.toString())}` : 'Nuevo ticket'
-  const isNew = id === 'new' || !id
+  if (!id) {
+    return {
+      notFound: true
+    }
+  }
+
+  const title = id === 'new' ? 'Nuevo ticket' : `Editando ${formatId(id.toString())}`
 
   return {
-    props: { title, isNew, id }
+    props: { title, id }
   }
 }
 

@@ -3,9 +3,9 @@ import type { UseFormRegister, FieldError } from 'react-hook-form'
 import clsx from 'clsx'
 
 interface Props {
-  register: UseFormRegister<any>
   label: string
   name: string
+  register?: UseFormRegister<any>
   type?: HTMLInputTypeAttribute
   placeholder?: string
   className?: string
@@ -29,19 +29,15 @@ export const Input: FC<Props> = ({
     className
   )
 
+  const props = { className: inputStyles, name, type, placeholder, ...(register && register(name)) }
+
   return (
     <span className='text-sm w-full'>
       <label className={labelStyles} htmlFor='email'>
         {label}
         {error && <span>{error.message}</span>}
       </label>
-      <input
-        {...register(name)}
-        className={inputStyles}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-      />
+      <input {...props} />
     </span>
   )
 }

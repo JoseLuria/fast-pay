@@ -10,11 +10,11 @@ interface Props {
 
 export const BackButton: FC<Props> = ({ className }) => {
   const router = useRouter()
-  const { previousPath: prevousPath } = usePathStore()
+  const { previousPath } = usePathStore()
 
   const styles = clsx('flex gap-4 font-semibold text-sm', className)
 
-  const back = () => (prevousPath ? router.back() : router.push('/'))
+  const back = () => (previousPath ? router.back() : router.push('/'))
 
   return (
     <button className={styles} onClick={back} type='button'>

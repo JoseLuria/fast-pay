@@ -28,7 +28,8 @@
     "sharp": "^0.32.0",
     "sonner": "^0.3.0",
     "typescript": "5.0.3",
-    "zod": "^3.21.4"
+    "zod": "^3.21.4",
+    "zustand": "^4.3.7"
   },
   "devDependencies": {
     "@svgr/webpack": "^7.0.0",

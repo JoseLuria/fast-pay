@@ -1,3 +1,3 @@
-export * from './AxiosInterceptor'
+export * from './AppProvider'
 export * from './Head'
 export * from './ErrorBoundary'

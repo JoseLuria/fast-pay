@@ -9,7 +9,7 @@ datasource db {
 
 model Ticket {
   id            String      @id @default(uuid()) @db.Uuid
-  decription    String
+  description   String
   clientName    String
   clientEmail   String
   date          DateTime    @default(now())

@@ -25,3 +25,7 @@ export const formatPrice = (price: number) => {
 
   return formatter.format(price)
 }
+
+export const getCurrentDate = (date?: string) => {
+  return new Date(date ?? Date.now()).toISOString().split('T')[0]
+}

@@ -1,17 +1,17 @@
 import dynamic from 'next/dynamic'
 import { DashboardLayout, ErrorBoundary, TicketsHeader, TicketLoading } from '@/components'
-import { useTicket } from '@/hooks'
+import { useTickets } from '@/hooks'
 
 const TicketEmpty = dynamic(import('@/components').then(({ TicketsEmpty }) => TicketsEmpty))
 const TicketList = dynamic(import('@/components').then(({ TicketsList }) => TicketsList))
 
 const Dashboard = () => {
-  const { tickets, status } = useTicket()
+  const { tickets, status, filterByStatus } = useTickets()
 
   return (
     <ErrorBoundary error={status === 'error'}>
       <DashboardLayout title='Mis facturas'>
-        <TicketsHeader size={tickets.length} />
+        <TicketsHeader onFilter={filterByStatus} size={tickets.length} />
         {status === 'loading' ? (
           <TicketLoading />
         ) : (

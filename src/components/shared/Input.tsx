@@ -1,8 +1,8 @@
-import type { FC, HTMLInputTypeAttribute } from 'react'
+import type { FC, HTMLInputTypeAttribute, InputHTMLAttributes } from 'react'
 import type { UseFormRegister, FieldError } from 'react-hook-form'
 import clsx from 'clsx'
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string
   name: string
   register?: UseFormRegister<any>
@@ -19,7 +19,8 @@ export const Input: FC<Props> = ({
   placeholder,
   type = 'text',
   error,
-  label
+  label,
+  ...restProps
 }) => {
   const labelStyles = clsx('flex justify-between mb-[10px]', error && 'text-red duration-200')
 
@@ -29,7 +30,14 @@ export const Input: FC<Props> = ({
     className
   )
 
-  const props = { className: inputStyles, name, type, placeholder, ...(register && register(name)) }
+  const props = {
+    className: inputStyles,
+    name,
+    type,
+    placeholder,
+    ...restProps,
+    ...(register && register(name))
+  }
 
   return (
     <span className='text-sm w-full'>

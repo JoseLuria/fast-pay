@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { GetServerSideProps } from 'next'
-import { DashboardLayout, Text } from '@/components'
-import { formatId } from '@/utils'
+import { DashboardLayout, Text, BackButton, Input } from '@/components'
+import { formatId, getCurrentDate } from '@/utils'
 
 interface Props {
   title: string
@@ -11,7 +11,22 @@ interface Props {
 const TicketEdit: FC<Props> = ({ title, id }) => {
   return (
     <DashboardLayout title={title}>
-      <Text tag='h1'>{title}</Text>
+      <BackButton />
+      <Text className='mt-8 mb-6' tag='h1'>
+        {title}
+      </Text>
+      <form className='flex flex-col gap-6'>
+        <Input name='decription' label='Descripción' placeholder='Diseño gráfico' />
+        <Input name='clientName' label='Nombre del destinatario' placeholder='Jhon Doe' />
+        <Input name='clientEmail' label='Correo del destinatario' placeholder='correo@mail.com' />
+        <Input
+          name='date'
+          type='date'
+          label='Fecha del ticket'
+          defaultValue={getCurrentDate()}
+          disabled
+        />
+      </form>
     </DashboardLayout>
   )
 }

@@ -1,6 +1,6 @@
 import { TicketsContainer } from '@/components'
 
-export const TicketLoading = () => {
+export const TicketListPlaceholder = () => {
   const placeholderElements = [0, 1, 2, 3]
 
   return (

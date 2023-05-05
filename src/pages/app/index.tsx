@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { DashboardLayout, ErrorBoundary, TicketsHeader, TicketLoading } from '@/components'
+import { DashboardLayout, ErrorBoundary, TicketsHeader, TicketListPlaceholder } from '@/components'
 import { useTickets } from '@/hooks'
 
 const TicketEmpty = dynamic(import('@/components').then(({ TicketsEmpty }) => TicketsEmpty))
@@ -13,7 +13,7 @@ const Dashboard = () => {
       <DashboardLayout title='Mis facturas'>
         <TicketsHeader onFilter={filterByStatus} size={tickets.length} />
         {status === 'loading' ? (
-          <TicketLoading />
+          <TicketListPlaceholder />
         ) : (
           <>{tickets.length > 0 ? <TicketList tickets={tickets} /> : <TicketEmpty />}</>
         )}

@@ -1,4 +1,5 @@
-export * from './TicketLoading'
+export * from './TicketDetailsPlaceholder'
+export * from './TicketListPlaceholder'
 export * from './TicketsContainer'
 export * from './TicketsEmpty'
 export * from './TicketsHeader'

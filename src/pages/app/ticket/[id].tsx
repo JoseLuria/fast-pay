@@ -1,10 +1,13 @@
-import { DashboardLayout } from '@/components'
+import { DashboardLayout, BackButton, TicketDetailsPlaceholder, ErrorBoundary } from '@/components'
 
 const TicketById = () => {
   return (
-    <DashboardLayout title='Ticket'>
-      <h1>TicketById</h1>
-    </DashboardLayout>
+    <ErrorBoundary>
+      <DashboardLayout className='mb-24 lg:mb-0' title='Ticket'>
+        <BackButton />
+        <TicketDetailsPlaceholder />
+      </DashboardLayout>
+    </ErrorBoundary>
   )
 }
 

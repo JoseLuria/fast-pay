@@ -1,4 +1,4 @@
-import type { FC, HTMLInputTypeAttribute, InputHTMLAttributes } from 'react'
+import type { FC, InputHTMLAttributes } from 'react'
 import type { UseFormRegister, FieldError } from 'react-hook-form'
 import clsx from 'clsx'
 
@@ -6,9 +6,6 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string
   name: string
   register?: UseFormRegister<any>
-  type?: HTMLInputTypeAttribute
-  placeholder?: string
-  className?: string
   error?: FieldError
 }
 
@@ -40,12 +37,12 @@ export const Input: FC<Props> = ({
   }
 
   return (
-    <span className='text-sm w-full'>
+    <fieldset className='text-sm w-full'>
       <label className={labelStyles} htmlFor='email'>
         {label}
         {error && <span>{error.message}</span>}
       </label>
       <input {...props} />
-    </span>
+    </fieldset>
   )
 }

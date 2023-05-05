@@ -64,16 +64,17 @@ export const TicketsHeader: FC<Props> = ({ size, onFilter }) => {
         >
           <Popover.Panel className='absolute shadow-md z-10 bg-white flex flex-col gap-1 top-10 rounded-xl right-0 text-black p-4'>
             {Object.values(TicketSatus).map((status) => (
-              <div className='flex justify-between gap-4' key={status}>
+              <fieldset className='flex justify-between gap-4 items-center' key={status}>
                 <label htmlFor={status}>{statusTexts[status]}</label>
                 <input
+                  className='appearance-none rounded-sm bg-gray bg-opacity-50 w-4 h-4 checked:bg-green checked:bg-[url(/assets/mark-icon.webp)]'
                   onChange={() => checkStatus(status)}
                   type='checkbox'
                   name={status}
                   value={status}
                   checked={statusToFilterList.includes(status)}
                 />
-              </div>
+              </fieldset>
             ))}
           </Popover.Panel>
         </Transition>

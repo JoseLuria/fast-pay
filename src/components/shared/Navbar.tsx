@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Logo, Menu } from '@/components/svg'
+import { Logo } from '@/components/svg'
+import { Button } from '@/components'
 
 export const Navbar = () => {
   return (
@@ -8,9 +9,9 @@ export const Navbar = () => {
         <Logo height={32} />
       </Link>
 
-      <button>
-        <Menu width={32} height={32} />
-      </button>
+      <Button href='/login' variant='outline'>
+        Login
+      </Button>
     </nav>
   )
 }

@@ -12,13 +12,11 @@ export interface UserTicket {
 export type Tickets = { tickets: UserTicket[] }
 
 export interface SingleTicketItem extends Omit<Item, 'ticketId'> {
-  total: string
+  total: number
 }
 
-export interface SingleTicket extends Omit<Ticket, 'date' | 'terms' | 'userId' | 'transactionId'> {
-  createdAt: Date
-  expiredAt: Date
-  items: SingleTicketItem
+export interface SingleTicket extends Omit<Ticket, 'userId' | 'transactionId'> {
+  items: SingleTicketItem[]
   total: number
 }
 

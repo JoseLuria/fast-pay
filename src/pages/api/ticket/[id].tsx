@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import type { SingleTicketApi } from '@/server/types'
 import { getTicketData } from '@/server'
 import { invalidMethod, catchError, AppError, getSession } from '@/server/utils'
 
-export default catchError(async (req: NextApiRequest, res: NextApiResponse<any>) => {
+export default catchError(async (req: NextApiRequest, res: NextApiResponse<SingleTicketApi>) => {
   switch (req.method) {
     case 'GET':
       return await getTicketById(req, res)
@@ -11,7 +12,7 @@ export default catchError(async (req: NextApiRequest, res: NextApiResponse<any>)
   }
 })
 
-const getTicketById = async (req: NextApiRequest, res: NextApiResponse<any>) => {
+const getTicketById = async (req: NextApiRequest, res: NextApiResponse<SingleTicketApi>) => {
   const { id = '' } = req.query as { id: string }
 
   const session = await getSession(req)
@@ -28,5 +29,5 @@ const getTicketById = async (req: NextApiRequest, res: NextApiResponse<any>) => 
     throw new AppError(401, 'Ticket no encontrado')
   }
 
-  res.status(200).json({ ticket })
+  res.status(200).json(ticket)
 }

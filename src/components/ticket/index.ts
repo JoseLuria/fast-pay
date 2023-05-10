@@ -1,3 +1,4 @@
+export * from './TicketDetails'
 export * from './TicketDetailsPlaceholder'
 export * from './TicketListPlaceholder'
 export * from './TicketsContainer'

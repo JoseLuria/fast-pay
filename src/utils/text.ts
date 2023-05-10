@@ -29,3 +29,9 @@ export const formatPrice = (price: number) => {
 export const getCurrentDate = (date?: string) => {
   return new Date(date ?? Date.now()).toISOString().split('T')[0]
 }
+
+export const calculateTicketEnd = (start: Date, duration: number) => {
+  const date = new Date(start)
+  date.setDate(date.getDate() + duration)
+  return date
+}

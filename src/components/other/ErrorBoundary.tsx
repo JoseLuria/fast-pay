@@ -4,6 +4,7 @@ import { Error } from '@/components'
 interface Props {
   children?: ReactNode
   error?: boolean
+  type?: 'error' | 'page'
 }
 
 interface State {
@@ -26,7 +27,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError || this.props.error) {
-      return <Error />
+      return <Error type={this.props.type} />
     }
 
     return this.props.children
